@@ -5,7 +5,7 @@ import random
 
 
 def start_game():
-    colours = ("Red", "Yellow", "Green", "Blue")
+    colours = ("Red", "Yellow", "Green", "Blue", "balls")
     ranks = list(range(1, 11)) + ["+2"]  # Add "+2" as a special rank
     deck = [(rank, colour) for rank in ranks for colour in colours]
     random.shuffle(deck)
