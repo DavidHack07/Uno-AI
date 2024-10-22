@@ -63,6 +63,9 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
         p1, p2 = p2, p1
         whose_turn = (whose_turn + 1) % 2
 
+    winner = 1 if len(p1) == 0 else 2
+    print(f"Player {winner} wins!")
+
 
 
 
