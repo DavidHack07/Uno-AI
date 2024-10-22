@@ -1,12 +1,12 @@
-# code by Pranjwal Singh and James Ferdinand Combista
+# code by David Hack and James Combista
 # implemented +2
 
 import random
 
 
 def start_game():
-    colours = ("Red", "Yellow", "Green", "Blue", "balls")
-    ranks = list(range(1, 11)) + ["+2"]  # Add "+2" as a special rank
+    colours = ("Red", "Yellow", "Green", "Blue", "Skip Turn")
+    ranks = list(range(1, 11)) + ["+2"] + ["Skip Turn"]  # Add "+2" as a special rank
     deck = [(rank, colour) for rank in ranks for colour in colours]
     random.shuffle(deck)
 
@@ -50,6 +50,10 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
                 p2.append(deck.pop(0))
                 p2.append(deck.pop(0))
                 plus2_flag = False
+
+            skip_turn = True
+            if central_card[0] == "Skip Turn" and skip_turn == True:
+                whose_turn = (whose_turn + 1)
 
         elif ans == 0:
             draw_card = deck.pop(0)
