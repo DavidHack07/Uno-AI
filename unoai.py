@@ -1,12 +1,12 @@
 # code by David Hack and James Combista
-# implemented +2
+# implemented +2 and Skip Turn
 
 import random
 
 
 def start_game():
     colours = ("Red", "Yellow", "Green", "Blue")
-    ranks = list(range(1, 11)) + ["+2"] + ["Skip Turn"]  # Add "+2" as a special rank
+    ranks = list(range(1, 11)) + ["+2"] + ["Skip Turn"]  # Add "+2" and Skip Turn as special ranks
     deck = [(rank, colour) for rank in ranks for colour in colours]
     random.shuffle(deck)
 
@@ -16,8 +16,9 @@ def start_game():
     central_card = deck.pop(0)
     main_loop(p1, p2, deck, central_card, 0)
 
+
 def main_loop(p1, p2, deck, central_card, whose_turn):
-    while len(p1)>0 and len(p2)>0:
+    while len(p1) > 0 and len(p2) > 0:
         print(f"\nPlayer {whose_turn + 1}'s turn, here is your hand {p1}")
         print(f"Central card is: {central_card}")
 
@@ -45,7 +46,7 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
                     print("Invalid card selection. Please try again.")
 
             plus2_flag = True
-            if central_card[0] == "+2" and plus2_flag==True:
+            if central_card[0] == "+2" and plus2_flag == True:
                 print("The opponent must draw 2 cards!")
                 p2.append(deck.pop(0))
                 p2.append(deck.pop(0))
