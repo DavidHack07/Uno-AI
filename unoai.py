@@ -45,12 +45,16 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
                 else:
                     print("Invalid card selection. Please try again.")
 
+# +2 card code
             plus2_flag = True
+
             if central_card[0] == "+2" and plus2_flag == True:
                 print("The opponent must draw 2 cards!")
                 p2.append(deck.pop(0))
                 p2.append(deck.pop(0))
                 plus2_flag = False
+
+# Skip turn card code ->
 
             skip_turn = True
             if central_card[0] == "Skip Turn" and skip_turn == True:
@@ -62,6 +66,8 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
 
         p1, p2 = p2, p1
         whose_turn = (whose_turn + 1) % 2
+
+# Determining winner code
 
     winner = 1 if len(p1) == 0 else 2
     print(f"Player {winner} wins!")
