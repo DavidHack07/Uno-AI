@@ -24,7 +24,7 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
 
 
         ans = int(input("You have a choice. You can (0) draw or (1) play: "))
-        if ans != 1 or ans != 0:
+        if ans != 1 and ans != 0:
             for _ in range(100):
                 ans = int(input("Bad Choice. You can (0) draw or (1) play: "))
                 if ans == 1 or ans == 0:
