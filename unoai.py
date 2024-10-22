@@ -68,7 +68,6 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
 
 
 
-
 def valid_play(card1, card2):
     return card1[0] == card2[0] or card1[1] == card2[1]
 
