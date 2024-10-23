@@ -1,4 +1,4 @@
-# code by David Hack and James Combista
+# code by David Hack and James Combista and AI
 # implemented +2 and Skip Turn
 
 import random
@@ -18,7 +18,7 @@ def start_game():
 
 
 def main_loop(p1, p2, deck, central_card, whose_turn):
-    count = 0
+    #count = 0
     while len(p1) > 0 and len(p2) > 0:
 
         print(f"\nPlayer {whose_turn + 1}'s turn, here is your hand {p1}")
@@ -32,21 +32,7 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
                 if ans == 1 or ans == 0:
                     break
         skip_turn = True
-        if ans == 1:
-            valid_play_found = "No :("
 
-            while valid_play_found == "No :(":
-                player_choice = int(input("Which card to play? (Enter the card number starting from 1): ")) - 1
-                if 0 <= player_choice < len(p1):
-                    valid = valid_play(central_card, p1[player_choice])
-                    if valid:
-                        player_card = p1[player_choice]
-                        central_card = p1.pop(player_choice)
-                        valid_play_found = "Yup"
-                    else:
-                        print("Invalid play. Please choose a valid card.")
-                else:
-                    print("Invalid card selection. Please try again.")
 
 # +2 card code
 
@@ -61,18 +47,40 @@ def main_loop(p1, p2, deck, central_card, whose_turn):
                 print("The opponent turn has been skipped!")
                 whose_turn = (whose_turn + 1)
                 skip_turn = False
-                count += 1
+                #count += 1
 
         elif ans == 0:
             draw_card = deck.pop(0)
             p1.append(draw_card)
 
         if skip_turn:
-            p1, p2 = p2, p1
+            ai_turn(p2, central_card, deck)
 
-        count += 1
+       # count += 1
 
-        whose_turn = (whose_turn + 1) % 2
+        #whose_turn = (whose_turn + 1) % 2
+
+def ai_turn(ai_hand, central, deck):
+    # chances are, at the end of the ai_turn, they will have modified the central_card
+    # This function should return the new central_card. 
+
+    # 1st: is there a playable card in the ai_hand??
+        # loop over all the cards in the ai_hand
+        # if we find a valid card (using valid_play), we remove that card from the ai hand
+        # and we place it on top of the central card
+    # if no playable card is found, ai draws a card
+
+    position_count = 0
+    for card in range(len(ai_hand)):
+        valid = valid_play(central, ai_hand)
+        if valid:
+            ai_card = ai_hand[card_count]
+            central_card = ai_hand.pop(position_card)
+            break
+        position_count += 1
+
+
+    return central
 
 # Determining winner code
     if count % 2 == 0:
